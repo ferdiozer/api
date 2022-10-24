@@ -1,6 +1,7 @@
 const { APP_PORT, MONGO_DATABASE_URL,LOGGER } = require('./config')
 
-const fastify = require('fastify')({ logger: LOGGER })
+const fastify = require('fastify')()
+//const fastify = require('fastify')({ logger: LOGGER })
 
 const froutes = []
 fastify.addHook('onRoute', (routeOptions) => {
