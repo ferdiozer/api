@@ -22,7 +22,6 @@
   "dependencies": {
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
-    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "fastify": "^3.28.0",
     "fastify-cors": "^5.1.0",
