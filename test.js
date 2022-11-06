@@ -10,7 +10,17 @@ const { MASTER_TOKEN } = require('./main/config');
 require('dotenv').config();
 
 
-start()
+read()
+
+function read() {
+    let data = '';
+    const readStream = fs.createReadStream('hsys-copy-all_0.csv', 'utf-8');
+    readStream.on('error', (error) => console.log(error.message));
+    readStream.on('data', (chunk) => data += chunk);
+    readStream.on('end', () => console.log('Reading complete'));
+ };
+ 
+
 
 async function start() {
     try {
