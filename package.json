@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ferdiozer/apix#readme",
   "dependencies": {
     "axios": "^0.24.0",
+    "csv-parse": "^5.3.1",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.0.3"
   }

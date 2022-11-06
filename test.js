@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const csv = require('csv-parser');
+const { parse } = require("csv-parse");
 
 const axios = require('axios');
 const { MASTER_TOKEN } = require('./main/config');
@@ -10,7 +11,40 @@ const { MASTER_TOKEN } = require('./main/config');
 require('dotenv').config();
 
 
-read()
+read2()
+
+
+function read2() {
+    const readStream = fs.createReadStream('hsys-copy-all_0.csv', 'utf-8');
+    readStream.pipe(parse({ delimiter: ",", from_line: 2 },async function name(err,succ) {
+        if(!err && succ.length>0){
+            for (let index = 0; index < succ.length; index++) {
+                const element = succ[index];
+                const f1 = element[0]
+                const f2 = element[1]
+                const f3 = element[2]
+                const f4 = element[3]
+                const f5 = element[4]
+                const f6 = element[5]
+                const f7 = element[6]
+                const f8 = element[7]
+                const f9 = element[8]
+                const f10 = element[9]
+                const f11 = element[10]
+                const sendData =  {
+                    f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11
+                };
+                // console.log("LOG"+index,element)
+                // console.log("sendData",sendData)
+                await postInsertfList(sendData)
+            }
+
+        }
+    }))
+    readStream.on('error', (error) => console.log("error",error.message));
+    readStream.on('end', () => console.log('end','Reading complete'));
+ };
+
 
 function read() {
     let data = '';
