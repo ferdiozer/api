@@ -46,6 +46,15 @@ function read2() {
  };
 
 
+
+ function testApi(params) {
+    const sendData =  {
+        f1: Date.now(),f2:"Test",f3:"test",f4:"test",f5:"test",f6:"test",f7:"test",f8:"test",f9:"test",f10:"test",f11:"test"
+    };
+     postInsertfList(sendData)
+ }
+
+
 function read() {
     let data = '';
     const readStream = fs.createReadStream('hsys-copy-all_0.csv', 'utf-8');
