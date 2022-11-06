@@ -16,7 +16,10 @@ function read() {
     let data = '';
     const readStream = fs.createReadStream('hsys-copy-all_0.csv', 'utf-8');
     readStream.on('error', (error) => console.log(error.message));
-    readStream.on('data', (chunk) => data += chunk);
+   //readStream.on('data', (chunk) => data += chunk);
+    readStream.on('data', (chunk) => {
+        console.log("ccssv:",csv(chunk))
+    });
     readStream.on('end', () => console.log('Reading complete'));
  };
  
