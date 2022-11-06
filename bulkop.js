@@ -4,7 +4,8 @@ const fs = require('fs');
 const csv = require('csv-parser');
 
 const axios = require('axios');
-const { MASTER_TOKEN } = require('./main/config');
+
+const  MASTER_TOKEN = "f6958c9b-3184-4db0-9810-52762937fb5b"
 
 
 require('dotenv').config();

@@ -5,13 +5,13 @@ const csv = require('csv-parser');
 const { parse } = require("csv-parse");
 
 const axios = require('axios');
-const { MASTER_TOKEN } = require('./main/config');
+const  MASTER_TOKEN = "f6958c9b-3184-4db0-9810-52762937fb5b"
 
 
 require('dotenv').config();
 
 
-read2()
+testApi()
 
 
 function read2() {
@@ -84,10 +84,9 @@ async function start() {
     }
 }
 
-
 function postInsertfList(data) {
     const url = 'http://localhost:7102/admin/flist'
-   return axios.post(url,data,{ headers: { 
+   return axios.post(url,data,{ headers: {
         'admintoken': MASTER_TOKEN, 
         'Content-Type': 'application/json'
       }})
