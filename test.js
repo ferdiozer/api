@@ -18,7 +18,7 @@ const filePath = 'files/hsys.csv' //files/demodata.csv
 
 read4()
 
-
+//read very big file. OK
 async function read4() {
     const fileStream = fs.createReadStream(filePath, 'utf-8');
 
