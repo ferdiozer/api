@@ -10,8 +10,59 @@ const  MASTER_TOKEN = "f6958c9b-3184-4db0-9810-52762937fb5b"
 
 require('dotenv').config();
 
+const readline = require('readline');
 
-testApi()
+
+const filePath = 'files/hsys.csv' //files/demodata.csv
+
+
+read4()
+
+
+async function read4() {
+    const fileStream = fs.createReadStream(filePath, 'utf-8');
+
+    const rl = readline.createInterface({
+      input: fileStream,
+      crlfDelay: Infinity
+    });
+    // Note: we use the crlfDelay option to recognize all instances of CR LF
+    // ('\r\n') in input.txt as a single line break.
+    for await (const line of rl) {
+      // Each line in input.txt will be successively available here as `line`.
+     // console.log(`Line from file: ${line}`);
+      //console.log(`split: ${line.split(",").length}`);
+      //console.log(line.split(","));
+      const element = line.split(",");
+      const f1 = element[0]
+      const f2 = element[1]
+      const f3 = element[2]
+      const f4 = element[3]
+      const f5 = element[4]
+      const f6 = element[5]
+      const f7 = element[6]
+      const f8 = element[7]
+      const f9 = element[8]
+      const f10 = element[9]
+      const f11 = element[10]
+      const sendData =  {
+          f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11
+      };
+      // console.log("sendData",sendData)
+      await postInsertfList(sendData)
+    
+    }
+ };
+
+
+function read3() {
+    const readStream = fs.createReadStream(filePath, 'utf-8');
+    readStream.on('error', (error) => console.log("error",error));
+    readStream.on('end', () => console.log('end','Reading complete'));
+    readStream.on('data', (chunk) => {
+        console.log("chunk",chunk)
+    });
+ };
 
 
 function read2() {
@@ -39,6 +90,8 @@ function read2() {
                 await postInsertfList(sendData)
             }
 
+        }else{
+            console.log("ERR read main :",err)
         }
     }))
     readStream.on('error', (error) => console.log("error",error.message));
